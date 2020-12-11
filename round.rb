@@ -26,14 +26,14 @@ class Round
   end
 
   def did_user_win?(answer, ai)
-    answer == "Rock" && ai == "Scissors" ||
-    answer == "Paper" && ai == "Rock" ||
-    answer == "Scissors" && ai == "Paper"
+    answer == "Rock" || "rock" && ai == "Scissors" ||
+    answer == "Paper" || "paper" && ai == "Rock" ||
+    answer == "Scissors" || "scissors" && ai == "Paper"
   end
 
   def did_ai_win?(answer, ai) 
-    answer == "Paper" && ai == "Scissors" ||
-    answer == "Rock" && ai == "Paper" ||
-    answer == "Scissors" && ai == "Rock"
+    answer == "Paper" || "paper" && ai == "Scissors" ||
+    answer == "Rock" || "rock" && ai == "Paper" ||
+    answer == "Scissors" || "scissors" && ai == "Rock"
   end
 end

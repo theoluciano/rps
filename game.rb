@@ -1,16 +1,16 @@
 require_relative "round"
 
 class Game
+  def initialize
+    @game_type = ''
+  end
+
   def start
-    game_type = determine_game_type
+    determine_game_type
 
-    round = Round.new
+    round = Round.new(@game_type)
+    round.play
 
-    if game_type == "1"
-      round.play(1, "You won!", "You lost!")
-    else 
-      round.play(2, "You won that round!", "You lost that round!")
-    end
     play_again
   end
 
@@ -24,7 +24,7 @@ class Game
       type = gets.chomp.downcase
     end
 
-    type
+    @game_type = type
   end
 
   def play_again

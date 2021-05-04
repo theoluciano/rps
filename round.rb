@@ -13,10 +13,10 @@ class Round
 
       puts "You chose #{answer}. I chose #{ai}"
 
-      if did_user_win?(answer, ai)
+      if user_won?(answer, ai)
         puts win_message
         player_one_win_count += 1
-      elsif did_ai_win?(answer, ai)
+      elsif ai_won?(answer, ai)
         puts lose_message
         player_two_win_count += 1
       else
@@ -25,15 +25,15 @@ class Round
     end
   end
 
-  def did_user_win?(answer, ai)
-    answer == "Rock" || "rock" && ai == "Scissors" ||
-    answer == "Paper" || "paper" && ai == "Rock" ||
-    answer == "Scissors" || "scissors" && ai == "Paper"
+  def user_won?(answer, ai)
+    (answer.downcase == "rock" && ai.downcase == 'scissors') ||
+    (answer.downcase == "paper" && ai.downcase == 'rock') ||
+    (answer.downcase == "scissors" && ai.downcase == 'paper')
   end
 
-  def did_ai_win?(answer, ai) 
-    answer == "Paper" || "paper" && ai == "Scissors" ||
-    answer == "Rock" || "rock" && ai == "Paper" ||
-    answer == "Scissors" || "scissors" && ai == "Rock"
+  def ai_won?(answer, ai)
+    (ai.downcase == "rock" && answer.downcase == 'scissors') ||
+    (ai.downcase == "paper" && answer.downcase == 'rock') ||
+    (ai.downcase == "scissors" && answer.downcase == 'paper')
   end
 end
